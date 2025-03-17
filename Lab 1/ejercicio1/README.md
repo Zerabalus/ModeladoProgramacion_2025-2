@@ -6,13 +6,19 @@ Ejercicios de Laboratorio I
 
 ### Fecha de entrega: 17 de Marzo de 2025
 
+Utilicé Maven usando:
+
+```
+$sudo apt install maven
+```
+
 Uso: Compilar al hacer:
 
 ```
 $ mvn compile
 ```
 
-Pasa todas sus pruebas unitarias al hacer:
+Pasa las pruebas unitarias al hacer:
 
 ```
 $ mvn test
@@ -32,7 +38,7 @@ $ java -jar target/ejercicio1-1.0-SNAPSHOT.jar
 La documentación generada por JavaDoc puede ser consultada aquí:
 - [Documentación Javadoc](./doc/index.html)
 
-### Consideradciones Generales
+### Consideraciones Generales
 
 El formato, estructuración y presentación de la entrega es libre, siempre se cumplan las
 siguientes condiciones:
