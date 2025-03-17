@@ -19,7 +19,7 @@ $ mvn test
 ```
 
 Por último, ejecutar correctamente el programa de la clase
-[`Ejecutable`] al ejecutar:
+[`main`] al ejecutar:
 
 ```
 $ mvn install
