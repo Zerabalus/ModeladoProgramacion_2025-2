@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 public class Ejercicio2Test {
 
     /**
-     * Unit test que verifica que el prefijo mas grande de un arreglo de cadenas.
+     * Prueba Unitaria que verifica que el prefijo mas grande de un arreglo de
+     * cadenas.
      * Salida esperada: "flor"
      */
 
@@ -15,16 +16,16 @@ public class Ejercicio2Test {
 
         Ejercicio2 buscador = new Ejercicio2();
         String[] entrada = { "flor", "flores", "floreria" };
-        String resultadoEsperado = "flor";
+        String salidaEsperada = "flor";
 
         String resultado = buscador.prefijoMasGrande(entrada);
 
-        assertEquals(resultadoEsperado, resultado);
+        assertEquals(salidaEsperada, resultado);
     }
 
     /**
-     * Unit test que verifica que el prefijo mas grande de un arreglo de cadenas no
-     * exista.
+     * Prueba Unitaria que verifica que el prefijo mas grande de un arreglo de
+     * cadenas no exista.
      * Salida esperada: ""
      */
 
@@ -32,8 +33,8 @@ public class Ejercicio2Test {
     void testSinPrefijoComun() {
         Ejercicio2 buscador = new Ejercicio2();
         String[] entrada = { "flor", "flores", "vape" };
-        String resultadoEsperado = "";
+        String salidaEsperada = "";
         String resultado = buscador.prefijoMasGrande(entrada);
-        assertEquals(resultadoEsperado, resultado);
+        assertEquals(salidaEsperada, resultado);
     }
 }

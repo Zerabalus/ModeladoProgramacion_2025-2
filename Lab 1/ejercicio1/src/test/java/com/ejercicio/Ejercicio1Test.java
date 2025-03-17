@@ -14,7 +14,7 @@ public class Ejercicio1Test {
      * 4 5 6
      * 7 8 8
      * 
-     * El valor repetido esperado es 8 y el valor faltante esperado es 9.
+     * El valor repetido esperado es 8 y el valor faltante es 9.
      */
 
     @Test
@@ -25,8 +25,8 @@ public class Ejercicio1Test {
                 { 4, 5, 6 },
                 { 7, 8, 8 }
         };
-        int[] resultado = ejercicio.encontrarValores(matriz);
-        assertArrayEquals(new int[] { 8, 9 }, resultado);
+        int[] salidaEsperada = ejercicio.encontrarValores(matriz);
+        assertArrayEquals(new int[] { 8, 9 }, salidaEsperada);
     }
 
     /**
@@ -42,14 +42,14 @@ public class Ejercicio1Test {
      */
 
     @Test
-    void testValoresRepetidosYFaltantes() {
+    void testEncontrarValores2() {
         Ejercicio1 ejercicio = new Ejercicio1();
         int[][] matriz = {
                 { 9, 1, 7 },
                 { 8, 9, 2 },
                 { 3, 4, 6 }
         };
-        int[] resultado = ejercicio.encontrarValores(matriz);
-        assertArrayEquals(new int[] { 9, 5 }, resultado);
+        int[] salidaEsperada = ejercicio.encontrarValores(matriz);
+        assertArrayEquals(new int[] { 9, 5 }, salidaEsperada);
     }
 }
