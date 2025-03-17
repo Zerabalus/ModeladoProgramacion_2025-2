@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.ejercicio","l":"Ejercicio1"},{"p":"com.ejercicio","l":"Ejercicio2"},{"p":"com.ejercicio","l":"Ejercicio3"},{"p":"com.ejercicio","l":"Ejercicio4"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.ejercicio","l":"Ejercicio1"},{"p":"com.ejercicio","l":"Ejercicio2"},{"p":"com.ejercicio","l":"Ejercicio3"},{"p":"com.ejercicio","l":"Ejercicio4"},{"p":"com.ejercicio","l":"Main"}];updateSearchResults();

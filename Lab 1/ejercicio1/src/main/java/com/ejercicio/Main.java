@@ -2,6 +2,25 @@ package com.ejercicio;
 
 import java.util.Scanner;
 
+/**
+ * Método principal para el programa.
+ * Este método proporciona una interfaz de consola con un menú para ejecutar
+ * diferentes ejercicios según la entrada del usuario.
+ * 
+ * Los ejercicios segun el pdf de la actividad son:
+ * 1. Encontrar los números repetidos y faltantes en una matriz.
+ * 2. Encontrar el mayor prefijo común entre las cadenas dadas.
+ * 3. Convertir un número romano a su valor decimal.
+ * 4. Convertir un número decimal a su representación en números romanos.
+ * 
+ * El usuario puede seleccionar una opción del menú y proporcionar la
+ * información necesaria
+ * para realizar el ejercicio deseado. El programa continúa solicitando al
+ * usuario
+ * hasta que se selecciona la opción de salida.
+ * 
+ */
+
 public class Main {
 
     public static void main(String[] args) {
@@ -40,57 +59,65 @@ public class Main {
 
                     // Procesa la entrada eliminando espacios y corchetes externos
                     input = input.replaceAll("\\s+", ""); // Elimina espacios en blanco
-                    if (input.length() > 1) {
-                        input = input.substring(1, input.length() - 1); // Elimina los corchetes de afuera
-                    } else {
-                        System.out.println("Entrada inválida. Debe ingresar una matriz en el formato.");
+
+                    // Valida el formato de la entrada
+                    if (!input.startsWith("[[") || !input.endsWith("]]")) {
+                        System.out.println("Entrada inválida. Debe ingresar una matriz en el formato [[...],[...]].");
                         break;
                     }
 
-                    // Dividir por filas
+                    // Elimina los corchetes externos
+                    input = input.substring(2, input.length() - 2);
+
+                    // Divide por filas
                     String[] filas = input.split("\\],\\[");
 
                     int tamaño = filas.length;
                     int[][] matriz = new int[tamaño][tamaño];
 
-                    for (int i = 0; i < tamaño; i++) {
-                        // Eliminar cualquier corchete restante y dividir por comas
-                        String[] numeros = filas[i].replaceAll("\\[|\\]", "").split(",");
-                        for (int j = 0; j < tamaño; j++) {
-                            matriz[i][j] = Integer.parseInt(numeros[j]);
+                    try {
+                        for (int i = 0; i < tamaño; i++) {
+                            // Elimina cualquier corchete restante y divide por comas
+                            String[] numeros = filas[i].replaceAll("\\[|\\]", "").split(",");
+                            for (int j = 0; j < tamaño; j++) {
+                                matriz[i][j] = Integer.parseInt(numeros[j]);
+                            }
                         }
-                    }
 
-                    // Pasar la matriz a Ejercicio1
-                    int[] resultado = ejercicio1.encontrarValores(matriz);
-                    System.out.println("Número repetido: " + resultado[0]);
-                    System.out.println("Número faltante: " + resultado[1]);
+                        // Pasar la matriz a Ejercicio1
+                        int[] resultado = ejercicio1.encontrarValores(matriz);
+                        System.out.println("Número repetido: " + resultado[0]);
+                        System.out.println("Número faltante: " + resultado[1]);
+                    } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+                        System.out.println(
+                                "Entrada inválida. Asegúrese de que la matriz esté bien formateada y contenga solo números.");
+                    }
                     break;
 
                 case 2:
                     // Ejercicio 2
                     System.out.println("Ejercicio 2: Encontrar el prefijo más grande común entre cadenas.");
-                    System.out.print("Ingrese las cadenas en formato [\"cadena1\", \"cadena2\", ...]: ");
+                    System.out.print("Ingrese las cadenas separadas por comas (ejemplo: cadena1, cadena2, cadena3): ");
                     String inputCadenas = scanner.nextLine();
 
-                    // Procesa la entrada
-                    inputCadenas = inputCadenas.trim(); // Elimina espacios al inicio y final
-                    if (inputCadenas.startsWith("[") && inputCadenas.endsWith("]")) {
-                        inputCadenas = inputCadenas.substring(1, inputCadenas.length() - 1); // Elimina corchetes
-                    } else {
-                        System.out.println("Formato de entrada inválido. Debe ser: [\"cadena1\", \"cadena2\", ...]");
+                    // Validar el formato de la entrada
+                    if (!inputCadenas.matches("^\\s*[a-zA-Z0-9 ]+(?:\\s*,\\s*[a-zA-Z0-9 ]+)*\\s*$")) {
+                        System.out.println("Formato de entrada inválido. Debe ser: cadena1, cadena2, ...");
                         break;
                     }
 
-                    // Divide las cadenas por comas y elimina comillas y espacios
-                    String[] cadenas = inputCadenas.split(",");
-                    for (int i = 0; i < cadenas.length; i++) {
-                        cadenas[i] = cadenas[i].trim().replace("\"", ""); // Elimina comillas y espacios
-                    }
+                    // Procesar la entrada
+                    String[] cadenas = inputCadenas.trim().split("\\s*,\\s*");
 
-                    // Llama al método para encontrar el prefijo más grande
+                    // Llamar al método para encontrar el prefijo más grande
                     String resultado2 = ejercicio2.prefijoMasGrande(cadenas);
-                    System.out.println("Prefijo más grande: " + resultado2);
+
+                    // Mostrar el resultado
+                    if (resultado2.isEmpty()) {
+                        System.out.println("No hay un prefijo común entre las cadenas.");
+                    } else {
+                        System.out.println("Prefijo más grande: " + resultado2);
+                    }
                     break;
 
                 case 3:

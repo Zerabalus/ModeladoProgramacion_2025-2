@@ -3,7 +3,12 @@ package com.ejercicio;
 /**
  * Encontrar los valores faltantes y repetidos en una matriz.
  * 
- * @param matriz La matriz a analizar.
+ * @param matriz             La matriz a analizar.
+ * @param numerosEncontrados Un arreglo de booleanos que indica si se ha
+ *                           encontrado
+ *                           un numero en la matriz.
+ * @param numeroRepetido     El numero que se encuentra repetido en la matriz.
+ * @param numeroFaltante     El numero que falta en la matriz.
  * @return Un vector con dos elementos. El primer elemento es el valor que se
  *         encuentra repetido en la matriz y el segundo el valor que falta.
  */

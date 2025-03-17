@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class MainTest {
 
     /**
-     * Test que verifica que se muestre un mensaje de error cuando se
+     * Prueba unitaria que verifica que se muestre un mensaje de error cuando se
      * proporciona una entrada inválida para el Ejercicio 1 (corchetes mal
      * puestos).
      *
@@ -25,7 +25,7 @@ public class MainTest {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        // Captura la salida del sistema
+        // Salida del sistema
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(outputStream);
         System.setOut(printStream);
@@ -39,14 +39,16 @@ public class MainTest {
     }
 
     /**
-     * Test que verifica que se muestre un mensaje de error cuando se
-     * proporciona una entrada inválida para el Ejercicio 2 (formato
+     * Prueba unitaria que verifica que se muestre un mensaje de error cuando se
+     * proporciona una entrada inválida para el Ejercicio 2 (formato de entrada
      * incorrecto).
+     *
+     * En este test, se simula una entrada inválida para el Ejercicio 2 Se
+     * verifica que se muestre un mensaje de error con el formato correcto.
      */
     @Test
     public void testEjercicio2_EntradaInvalida() {
-        // Simula una entrada inválida para el Ejercicio 2 (formato incorrecto)
-        String input = "2\nflor, flores, floreria\n0\n"; // Falta el formato de corchetes y comillas
+        String input = "2\n\"flor\", \"floristeria\", \"floreria\"\n0\n";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
@@ -55,11 +57,10 @@ public class MainTest {
         PrintStream printStream = new PrintStream(outputStream);
         System.setOut(printStream);
 
-        // Ejecuta el método main
+        // Simular entrada y ejecutar Main.main()
         Main.main(new String[] {});
-
-        // Verifica que se muestre un mensaje de error
+        // Verificar que se muestre el mensaje de error
         String output = outputStream.toString();
-        assertTrue(output.contains("Formato de entrada inválido. Debe ser: [\"cadena1\", \"cadena2\", ...]"));
+        assertTrue(output.contains("Formato de entrada inválido. Debe ser: cadena1, cadena2, ..."));
     }
 }

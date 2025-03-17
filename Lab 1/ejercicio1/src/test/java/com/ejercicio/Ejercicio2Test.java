@@ -7,10 +7,8 @@ public class Ejercicio2Test {
 
     /**
      * Prueba Unitaria que verifica que el prefijo mas grande de un arreglo de
-     * cadenas.
-     * Salida esperada: "flor"
+     * cadenas. Salida esperada: "flor"
      */
-
     @Test
     void testPrefijoComun() {
 

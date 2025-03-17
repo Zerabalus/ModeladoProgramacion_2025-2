@@ -3,7 +3,10 @@ package com.ejercicio;
 /**
  * Devuelve el prefijo mas grande que tienen en común las cadenas dadas.
  * 
- * @param listaDeCadenas El arreglo de cadenas.
+ * @param listaDeCadenas   El arreglo de cadenas.
+ * @param prefijoMasGrande El prefijo mas grande de las cadenas.
+ * @param indice           El indice del prefijo mas grande.
+ * @param charAt           El caracter en el indice.
  * @return El prefijo mas grande.
  */
 
