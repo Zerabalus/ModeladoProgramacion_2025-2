@@ -19,12 +19,12 @@ $ mvn test
 ```
 
 Por último, ejecutar correctamente el programa de la clase
-[`main`] al ejecutar:
+`Main` al ejecutar:
 
 ```
 $ mvn install
 ...
-$ java -jar target/ejercicio1.jar
+$ java -jar target/ejercicio1-1.0-SNAPSHOT.jar
 ```
 
 ### Documentación
@@ -51,3 +51,4 @@ calificación adicional.
 - El lenguaje de programación utilizado es completamente libre, por lo que será
 necesario incluir en un archivo de texto, las instrucciones de compilación y/o ejecución
 respectivas al programa entregado.
+

@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * Convierte un número romano a su valor decimal.
  *
- * @param numeroRomano El n mero romano a convertir.
+ * @param numeroRomano El número romano a convertir.
  * @return El valor decimal convertido de romano.
  */
 
@@ -36,8 +36,8 @@ public class Ejercicio3 {
      * símbolos
      * romanos.
      *
-     * @return Un mapeo donde de caracteres que representan los
-     *         símbolos romanos y los valores son los en decimales.
+     * @return Un mapeo de caracteres que representan los
+     *         símbolos romanos en decimales.
      * 
      */
 

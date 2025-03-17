@@ -3,24 +3,20 @@ package com.ejercicio;
 import java.util.Scanner;
 
 /**
- * Método principal para el programa.
- * Este método proporciona una interfaz de consola con un menú para ejecutar
- * diferentes ejercicios según la entrada del usuario.
- * 
- * Los ejercicios segun el pdf de la actividad son:
- * 1. Encontrar los números repetidos y faltantes en una matriz.
- * 2. Encontrar el mayor prefijo común entre las cadenas dadas.
- * 3. Convertir un número romano a su valor decimal.
- * 4. Convertir un número decimal a su representación en números romanos.
- * 
+ * Método principal para el programa. Este método proporciona una interfaz de
+ * consola con un menú para ejecutar diferentes ejercicios según la entrada del
+ * usuario.
+ *
+ * Los ejercicios segun el pdf de la actividad son: 1. Encontrar los números
+ * repetidos y faltantes en una matriz. 2. Encontrar el mayor prefijo común
+ * entre las cadenas dadas. 3. Convertir un número romano a su valor decimal. 4.
+ * Convertir un número decimal a su representación en números romanos.
+ *
  * El usuario puede seleccionar una opción del menú y proporcionar la
- * información necesaria
- * para realizar el ejercicio deseado. El programa continúa solicitando al
- * usuario
- * hasta que se selecciona la opción de salida.
- * 
+ * información necesaria para realizar el ejercicio deseado. El programa
+ * continúa solicitando al usuario hasta que se selecciona la opción de salida.
+ *
  */
-
 public class Main {
 
     public static void main(String[] args) {
@@ -41,10 +37,10 @@ public class Main {
             System.out.println("0. Salir");
             System.out.print("Tu opción: ");
             int opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir el salto de línea después de nextInt()
+            scanner.nextLine(); // Para el salto de línea después de nextInt()
 
             if (opcion == 0) {
-                System.out.println("Saliendo del programa...");
+                System.out.println("Saliendo, vuelva pronto...");
                 break;
             }
 
@@ -84,7 +80,7 @@ public class Main {
                             }
                         }
 
-                        // Pasar la matriz a Ejercicio1
+                        // Pasa la matriz a la clase Ejercicio1
                         int[] resultado = ejercicio1.encontrarValores(matriz);
                         System.out.println("Número repetido: " + resultado[0]);
                         System.out.println("Número faltante: " + resultado[1]);
@@ -100,24 +96,23 @@ public class Main {
                     System.out.print("Ingrese las cadenas separadas por comas (ejemplo: cadena1, cadena2, cadena3): ");
                     String inputCadenas = scanner.nextLine();
 
-                    // Validar el formato de la entrada
-                    if (!inputCadenas.matches("^\\s*[a-zA-Z0-9 ]+(?:\\s*,\\s*[a-zA-Z0-9 ]+)*\\s*$")) {
-                        System.out.println("Formato de entrada inválido. Debe ser: cadena1, cadena2, ...");
+                    // Validar el formato con regex
+                    if (!inputCadenas.matches(
+                            "^\\s*[a-zA-Z0-9]+(\\s+[a-zA-Z0-9]+)*(\\s*,\\s*[a-zA-Z0-9]+(\\s+[a-zA-Z0-9]+)*)*\\s*$")) {
+                        System.out.println(
+                                "Formato de entrada inválido. Debe ser: cadena1, cadena2, ... (sin comillas o símbolos).");
                         break;
                     }
 
-                    // Procesar la entrada
+                    // Procesa la entrada
                     String[] cadenas = inputCadenas.trim().split("\\s*,\\s*");
 
-                    // Llamar al método para encontrar el prefijo más grande
+                    // Llama al método para encontrar el prefijo
                     String resultado2 = ejercicio2.prefijoMasGrande(cadenas);
 
-                    // Mostrar el resultado
-                    if (resultado2.isEmpty()) {
-                        System.out.println("No hay un prefijo común entre las cadenas.");
-                    } else {
-                        System.out.println("Prefijo más grande: " + resultado2);
-                    }
+                    // Da el resultado
+                    System.out.println(
+                            resultado2.isEmpty() ? "No hay prefijo común." : "Prefijo más grande: " + resultado2);
                     break;
 
                 case 3:
@@ -153,7 +148,7 @@ public class Main {
                         System.out.print("Ingrese un número decimal (1 a 3999): ");
                         if (scanner.hasNextInt()) { // Verificar si la entrada es un número entero
                             numeroDecimal = scanner.nextInt();
-                            if (numeroDecimal >= 1 && numeroDecimal <= 3999) { // Verificar si está dentro del rango
+                            if (numeroDecimal >= 1 && numeroDecimal <= 3999) { // Verifica si está dentro del rango
                                 break; // Sale del bucle si el número es válido
                             } else {
                                 System.out.println("El número debe estar en el rango [1, 3999]. Intente de nuevo.");
