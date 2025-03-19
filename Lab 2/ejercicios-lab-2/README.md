@@ -32,7 +32,7 @@ Por último, ejecutar correctamente el programa de la clase
 ```
 $ mvn install
 ...
-$ java -jar 
+$ java -jar target/ejercicios-lab-2-1.0-SNAPSHOT.jar
 ```
 
 ### Documentación
