@@ -29,6 +29,6 @@ public class Ejercicio1Test {
         String nota = "aa";
         String texto = "aba";
         boolean resultado = ejercicio1.puedeGenerarse(nota, texto);
-        assertTrue(resultado); // La salida esperada es true
+        assertTrue(resultado);
     }
 }
