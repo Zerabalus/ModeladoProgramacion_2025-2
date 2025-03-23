@@ -34,11 +34,23 @@ $ mvn install
 ...
 $ java -jar target/ejercicios-lab-2-1.0-SNAPSHOT.jar
 ```
+### Interfaz gráfica
+- Ejecutar usando:
+
+```
+mvn exec:java -Dexec.mainClass="com.lab2.MainGUI"
+```
 
 ### Documentación
 
 La documentación generada por JavaDoc puede ser consultada aquí:
 - [Documentación Javadoc](./doc/index.html)
+
+Generada usando:
+
+```
+javadoc -d doc/ src/main/java/com/lab2/*.java
+```
 
 ### Consideraciones Generales
 

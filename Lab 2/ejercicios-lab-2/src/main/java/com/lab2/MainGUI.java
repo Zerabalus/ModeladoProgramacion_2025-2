@@ -70,7 +70,7 @@ public class MainGUI extends JFrame {
         JButton ejercicio3Button = crearBoton("Ejercicio 3: Número feliz", icono);
         JButton ejercicio4Button = crearBoton("Ejercicio 4: Ocurrencia de subcadena", icono);
 
-        // Agregar botones al panel de botones
+        // Agrega botones al panel de botones
         botonesPanel.add(ejercicio1Button);
         botonesPanel.add(ejercicio2Button);
         botonesPanel.add(ejercicio3Button);
@@ -83,14 +83,14 @@ public class MainGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(resultadoArea);
         scrollPane.setBorder(BorderFactory.createTitledBorder("Resultados"));
 
-        // Agregar componentes al panel principal
+        // Agrega componentes al panel principal
         panel.add(botonesPanel, BorderLayout.WEST);
         panel.add(scrollPane, BorderLayout.CENTER);
 
-        // Agregar panel principal a la ventana
+        // Agrega panel principal a la ventana
         add(panel);
 
-        // Manejar eventos de los botones
+        // Maneja eventos de los botones
         ejercicio1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -147,7 +147,7 @@ public class MainGUI extends JFrame {
             }
         });
 
-        // Mostrar la ventana
+        // Muestra la ventana
         setVisible(true);
     }
 
@@ -155,14 +155,14 @@ public class MainGUI extends JFrame {
         JButton boton = new JButton(texto, icono);
         boton.setFont(new Font("SansSerif", Font.BOLD, 14));
         boton.setFocusPainted(false);
-        boton.setBackground(new Color(0, 123, 255)); // Color azul
+        boton.setBackground(new Color(71, 137, 146)); // Color de botoncitos
         boton.setForeground(Color.WHITE); // Texto blanco
         boton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         return boton;
     }
 
     public static void main(String[] args) {
-        // Ejecutar la interfaz gráfica en el hilo de eventos de Swing
+        // Ejecuta la interfaz gráfica
         SwingUtilities.invokeLater(MainGUI::new);
     }
 }
