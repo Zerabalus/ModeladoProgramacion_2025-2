@@ -8,20 +8,16 @@ import java.util.Scanner;
  * consola con un menú para ejecutar diferentes ejercicios según la entrada del
  * usuario.
  *
- * Los ejercicios según el pdf de la actividad son:
- * 1. Dadas dos cadenas determinar si se puede generar la primera con el
- * contenido de la segunda.
- * 2. Verificar si existen dos índices distintos con valores iguales dentro de
- * una distancia k.
- * 3. Determinar si un número es feliz.
- * 4. Encontrar el índice de la primera ocurrencia de una subcadena en una
- * cadena.
+ * Los ejercicios según el pdf de la actividad son: 1. Dadas dos cadenas
+ * determinar si se puede generar la primera con el contenido de la segunda. 2.
+ * Verificar si existen dos índices distintos con valores iguales dentro de una
+ * distancia k. 3. Determinar si un número es feliz. 4. Encontrar el índice de
+ * la primera ocurrencia de una subcadena en una cadena.
  *
  * El usuario puede seleccionar una opción del menú y proporcionar la
  * información necesaria para realizar el ejercicio deseado. El programa
  * continúa solicitando al usuario hasta que se selecciona la opción de salida.
  */
-
 public class Main {
 
     /**
@@ -153,7 +149,7 @@ public class Main {
                     String cadena2 = partesEjercicio4[1].trim();
 
                     // Llamar al método indiceOcurrencia y mostrar el resultado
-                    int resultadoEjercicio4 = ejercicio4.indiceOcurrencia(cadena2, cadena1);
+                    int resultadoEjercicio4 = ejercicio4.indiceOcurrencia(cadena1, cadena2);
                     System.out.println("Resultado: " + resultadoEjercicio4);
                     break;
 

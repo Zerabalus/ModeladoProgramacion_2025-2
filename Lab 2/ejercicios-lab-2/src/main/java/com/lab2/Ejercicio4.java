@@ -19,23 +19,24 @@ public class Ejercicio4 {
     public int indiceOcurrencia(String t, String s) {
         int longitudT = t.length();
         int longitudS = s.length();
-        int indiceN = 0;
-        for (int i = 0; i < longitudT; i++) {
-            // mientras los caracteres sean iguales, incrementa el indice de s
-            if (t.charAt(i) == s.charAt(indiceN)) {
-                indiceN++;
-            } else {
-                // comienza desde el siguiente índice del índice de inicio anterior
-                i = i - indiceN;
-                // s debe comenzar desde el índice 0
-                indiceN = 0;
+
+        // Si la subcadena es más larga que la cadena, no puede estar contenida
+        if (longitudS > longitudT) {
+            return -1;
+        }
+
+        for (int i = 0; i <= longitudT - longitudS; i++) {
+            int j;
+            for (j = 0; j < longitudS; j++) {
+                if (t.charAt(i + j) != s.charAt(j)) {
+                    break; // Si no coincide, salimos del bucle interno
+                }
             }
-            // comprobar si el indice de s alcanzó la longitud s
-            if (indiceN == longitudS) {
-                // devolver el primer índice
-                return i - longitudS + 1;
+            // Si j alcanza la longitud de s, significa que encontramos la subcadena
+            if (j == longitudS) {
+                return i; // Devolvemos el índice donde comienza la subcadena
             }
         }
-        return -1;
+        return -1; // Si no se encuentra, devolvemos -1
     }
 }
