@@ -94,8 +94,34 @@ public class MainGUI extends JFrame {
         ejercicio1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nota = JOptionPane.showInputDialog("Ingresa la nota:");
-                String texto = JOptionPane.showInputDialog("Ingresa el texto:");
+                // Solicita la entrada al usuario
+                String entrada = JOptionPane
+                        .showInputDialog("Ingresa la nota y el texto en el formato: 'nota', 'texto'");
+
+                // Valida que la entrada no sea nula o vacía
+                if (entrada == null || entrada.trim().isEmpty()) {
+                    resultadoArea.append("Entrada vacía. Intenta de nuevo.\n");
+                    return;
+                }
+
+                // Extrae los valores de nota y texto
+                String[] partes = entrada.split("'");
+                if (partes.length < 3) {
+                    resultadoArea.append("Formato de entrada incorrecto. Usa: 'nota', 'texto'\n");
+                    return;
+                }
+
+                // La primera cadena entre comillas es nota, la segunda es texto
+                String nota = partes[1].trim();
+                String texto = partes[3].trim();
+
+                // Valida que nota y texto no contengan números ni símbolos no permitidos
+                if (!nota.matches("[a-zA-Z]+") || !texto.matches("[a-zA-Z]+")) {
+                    resultadoArea.append("La nota y el texto solo deben contener letras. Intenta de nuevo.\n");
+                    return;
+                }
+
+                // Llamar al método puedeGenerarse de Ejercicio1 y nos da el resultado
                 boolean resultado = ejercicio1.puedeGenerarse(nota, texto);
                 resultadoArea.append("Ejercicio 1 - Resultado: " + resultado + "\n");
             }
@@ -104,22 +130,52 @@ public class MainGUI extends JFrame {
         ejercicio2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Solicita la entrada del arreglo
                 String arregloInput = JOptionPane
-                        .showInputDialog("Ingresa el arreglo de números (ejemplo: [1, 2, 3, 1]):");
-                String kInput = JOptionPane.showInputDialog("Ingresa el valor de k:");
+                        .showInputDialog("Ingresa el arreglo de números (ejemplo: [números separados por comas]):");
+
+                // Valida que la entrada no sea nula o vacía
+                if (arregloInput == null || arregloInput.trim().isEmpty()) {
+                    resultadoArea.append("Entrada vacía. Intenta de nuevo.\n");
+                    return;
+                }
+
+                // Valida que la entrada esté entre corchetes
+                if (!arregloInput.startsWith("[") || !arregloInput.endsWith("]")) {
+                    resultadoArea.append("Formato de entrada incorrecto. Usa: [números separados por comas]\n");
+                    return;
+                }
+
+                // Extrae los números del arreglo
+                String arregloStr = arregloInput.substring(1, arregloInput.length() - 1).replace(" ", "");
+                String[] numerosStr = arregloStr.split(",");
+
+                // Valida que todos los elementos sean números
+                int[] arreglo = new int[numerosStr.length];
                 try {
-                    String arregloStr = arregloInput.replace("[", "").replace("]", "").replace(" ", "");
-                    String[] numerosStr = arregloStr.split(",");
-                    int[] arreglo = new int[numerosStr.length];
                     for (int i = 0; i < numerosStr.length; i++) {
                         arreglo[i] = Integer.parseInt(numerosStr[i]);
                     }
-                    int k = Integer.parseInt(kInput);
-                    boolean resultado = ejercicio2.indicesDistintos(arreglo, k);
-                    resultadoArea.append("Ejercicio 2 - Resultado: " + resultado + "\n");
                 } catch (NumberFormatException ex) {
-                    resultadoArea.append("Formato de entrada incorrecto en Ejercicio 2.\n");
+                    resultadoArea.append("El arreglo debe contener solo números separados por comas.\n");
+                    return;
                 }
+
+                // Solicita la entrada de k
+                String kInput = JOptionPane.showInputDialog("Ingresa el valor de k:");
+
+                // Valida que k sea un número entero válido
+                int k;
+                try {
+                    k = Integer.parseInt(kInput.trim());
+                } catch (NumberFormatException ex) {
+                    resultadoArea.append("El valor de k debe ser un número entero.\n");
+                    return;
+                }
+
+                // Llama al método indicesDistintos de Ejercicio2 y nos da el resultado
+                boolean resultado = ejercicio2.indicesDistintos(arreglo, k);
+                resultadoArea.append("Ejercicio 2 - Resultado: " + resultado + "\n");
             }
         });
 
@@ -129,10 +185,12 @@ public class MainGUI extends JFrame {
                 String numeroInput = JOptionPane.showInputDialog("Ingresa un número:");
                 try {
                     int numero = Integer.parseInt(numeroInput);
+                    // Llama al método esFeliz de Ejercicio3 y nos da el resultado
                     boolean resultado = ejercicio3.esFeliz(numero);
                     resultadoArea.append("Ejercicio 3 - Resultado: " + resultado + "\n");
                 } catch (NumberFormatException ex) {
-                    resultadoArea.append("Formato de entrada incorrecto en Ejercicio 3.\n");
+                    resultadoArea.append(
+                            "Formato de entrada incorrecto para el número. Usa un número entero sin simbolos, etc.\n");
                 }
             }
         });
@@ -140,8 +198,24 @@ public class MainGUI extends JFrame {
         ejercicio4Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String cadena1 = JOptionPane.showInputDialog("Ingresa la cadena 1:");
-                String cadena2 = JOptionPane.showInputDialog("Ingresa la cadena 2:");
+                // Solicita la entrada de las cadenas
+                String cadena1 = JOptionPane.showInputDialog("Ingresa la cadena 1(t):");
+                String cadena2 = JOptionPane.showInputDialog("Ingresa la cadena 2(s):");
+
+                // Valida que las cadenas no sean nulas o vacías
+                if (cadena1 == null || cadena1.trim().isEmpty() || cadena2 == null || cadena2.trim().isEmpty()) {
+                    resultadoArea.append("Entrada vacía. Intenta de nuevo.\n");
+                    return;
+                }
+
+                // Valida que las cadenas solo contengan letras
+                if (!cadena1.matches("[a-zA-Z]+") || !cadena2.matches("[a-zA-Z]+")) {
+                    resultadoArea
+                            .append("Error de formato: Las cadenas solo deben contener letras. Intenta de nuevo.\n");
+                    return;
+                }
+
+                // Llama al método indiceOcurrencia del Ejercicio4 y nos da el resultado
                 int resultado = ejercicio4.indiceOcurrencia(cadena1, cadena2);
                 resultadoArea.append("Ejercicio 4 - Resultado: " + resultado + "\n");
             }

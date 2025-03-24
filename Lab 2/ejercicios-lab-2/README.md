@@ -6,6 +6,10 @@ Ejercicios de Laboratorio II
 
 ### Fecha de entrega: 27 de Marzo de 2025
 
+| Ejercicios de Laboratorio II | ![Miku](resources/miku.gif) |
+|------------------------------|-----------------------------|
+
+
 Utilicé Maven instalando:
 
 ```
@@ -40,6 +44,9 @@ $ java -jar target/ejercicios-lab-2-1.0-SNAPSHOT.jar
 ```
 mvn exec:java -Dexec.mainClass="com.lab2.MainGUI"
 ```
+![Interfaz](/resources/app.png)
+*Transparencia por la personalización del escritorio de Linux que tengo, pero es la idea 😅
+
 
 ### Documentación
 
