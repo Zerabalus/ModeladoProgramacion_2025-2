@@ -6,16 +6,20 @@
 
 **Ayudante Laboratorio : Eric Toporek Coca**
 
-## Tabla de Contenidos
-- [1. Introducción](#introduccion)
-- [2. Objetivos](#objetivos)
-- [3. Formato del Archivo de Entrada](#formato)
-- [4. Representación Matemática del Fractal](#representacion)
-- [5. Conversión de Coordenadas](#conversion)
-- [6. Archivos de Salida](#salida)
-- [7. Implementación](#implementacion)
+<p>
+  Proyecto 1: Graficación de fractales
+  <img src="img/sw.gif" alt="Silver" width="200" align="right">
+</p>
 
-# **Proyecto 1: Graficación de fractales**
+## Tabla de Contenidos
+- [1. Introducción](#1-introducción)
+- [2. Objetivos](#2-objetivos)
+- [3. Formato del Archivo de Entrada](#3-formato-del-archivo-de-entrada)
+- [4. Representación Matemática del Fractal](#4-representación-matemática-del-fractal)
+- [5. Conversión de Coordenadas](#5-conversión-de-coordenadas)
+- [6. Archivos de Salida](#6-archivos-de-salida)
+- [7. Implementación](#7-implementación)
+- [8. ](#)
 
 ## **1. Introducción**  
 Los fractales son estructuras matemáticas con propiedades autosimilares que surgen de iteraciones complejas. En este proyecto, exploraremos la generación de fractales a partir de **polinomios complejos** utilizando **Programación Orientada a Objetos (POO)**.  
@@ -114,7 +118,7 @@ $$
 
 Esta conversión es clave para evaluar cada píxel en la generación del fractal.
 
-## **6. archivos de salida**
+## **6. Archivos de salida**
 El programa deberá generar un archivo de salida en formato `PNG` o `JPG` que represente el fractal resultante. La imagen deberá tener las dimensiones especificadas en el archivo de entrada y los colores asignados según la convergencia o divergencia de los puntos en el plano complejo.
 
 Estos son algunos ejemplos de fractales generados con polinomios complejos:
@@ -162,7 +166,7 @@ color : (255,100,50)
 ![fractal2.png](img/fractal2.png)
 
 
-## **6. Implementación**  
+## **7. Implementación**  
 Los estudiantes deberán implementar las clases necesarias para modelar el problema y probar distintos polinomios complejos para generar fractales variados. El código deberá ser:  
 - **Modular y bien documentado.**  
 - **Usar las buenas practicas de código límpio.**
