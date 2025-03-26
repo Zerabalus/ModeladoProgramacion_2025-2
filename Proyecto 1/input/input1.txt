@@ -7,4 +7,4 @@ max : 2+2i
 iterations : 256                        
 threshold : 2                           
 color : (255,100,50)                    
-nombre : fractal.png                    
+nombre : fractal1.png                    
