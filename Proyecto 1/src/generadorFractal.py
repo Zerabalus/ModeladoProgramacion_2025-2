@@ -1,9 +1,10 @@
 import numpy as np
 from PIL import Image
 import colorsys
+import math
 
 class GeneradorFractal:
-    def __init__(self, ancho, alto, polinomio, min_complejo, max_complejo, iteraciones, umbral, color_base):
+    def __init__(self, ancho, alto, polinomio, min_complejo, max_complejo, iteraciones, umbral, **kwargs):
         self.ancho = ancho
         self.alto = alto
         self.polinomio = polinomio
@@ -11,13 +12,15 @@ class GeneradorFractal:
         self.max_complejo = complex(max_complejo)
         self.iteraciones = iteraciones
         self.umbral = umbral
-        self.color_base = color_base
+        self.centro_x = ancho // 2
+        self.centro_y = alto // 2
+        self.radio_max = math.sqrt(self.centro_x**2 + self.centro_y**2)
+        
+        # Acepta cualquier parámetro adicional sin generar errores
+        self.color_base = kwargs.get('color_base', None)  # No se usa realmente
 
     def generar(self):
         imagen = np.zeros((self.alto, self.ancho, 3), dtype=np.uint8)
-        
-        # Pre-calcular el logaritmo para mejor distribución de colores
-        log_iter = np.log(self.iteraciones)
         
         for x in range(self.ancho):
             for y in range(self.alto):
@@ -25,29 +28,31 @@ class GeneradorFractal:
                 escape_time = self._calcular_tiempo_escape(z)
                 
                 if escape_time < self.iteraciones:
-                    # Mejor mapeo de color con ajuste de brillo
-                    normalized = escape_time / self.iteraciones
-                    log_scale = np.log(escape_time + 1) / log_iter
+                    # Cálculo de distancia normalizada al centro
+                    dx, dy = x - self.centro_x, y - self.centro_y
+                    distancia = math.sqrt(dx*dx + dy*dy) / self.radio_max
                     
-                    # Ajuste de saturación y brillo
-                    h = (self.color_base[0]/255, self.color_base[1]/255, self.color_base[2]/255)
-                    r, g, b = colorsys.hsv_to_rgb(h[0], h[1], min(1.0, log_scale * 1.5))
+                    # Factor de brillo (1 en centro, 0.3 en bordes)
+                    brillo = 0.3 + 0.7 * (1 - distancia**0.7)
                     
-                    # Aplicar gamma correction
-                    gamma = 0.8
-                    r = int(255 * (r ** gamma))
-                    g = int(255 * (g ** gamma))
-                    b = int(255 * (b ** gamma))
+                    # Rango azul (0.55) a morado (0.83)
+                    hue = 0.55 + 0.28 * (escape_time / self.iteraciones)
                     
-                    imagen[y, x] = (r, g, b)
+                    # Conversión a RGB con saturación máxima
+                    r, g, b = colorsys.hsv_to_rgb(hue, 1.0, brillo)
+                    
+                    # Ajuste de canales para tonos fríos intensos
+                    r, g, b = r*0.8, g*0.9, min(1.0, b*1.2)
+                    
+                    imagen[y, x] = (int(255*r), int(255*g), int(255*b))
                 else:
-                    imagen[y, x] = (0, 0, 0)  # Negro para puntos que convergen
+                    imagen[y, x] = (0, 0, 0)  # Fondo negro
         
         return imagen
 
     def _pixel_a_complejo(self, x, y):
-        real = self.min_complejo.real + (x / self.ancho) * (self.max_complejo.real - self.min_complejo.real)
-        imag = self.min_complejo.imag + (y / self.alto) * (self.max_complejo.imag - self.min_complejo.imag)
+        real = self.min_complejo.real + (x/self.ancho) * (self.max_complejo.real - self.min_complejo.real)
+        imag = self.min_complejo.imag + (y/self.alto) * (self.max_complejo.imag - self.min_complejo.imag)
         return complex(real, imag)
 
     def _calcular_tiempo_escape(self, z):
