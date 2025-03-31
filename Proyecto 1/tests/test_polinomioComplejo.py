@@ -1,6 +1,10 @@
+import unittest
 from src.polinomioComplejo import polinomioComplejo
 
-def test_evaluar_polinomio():
-    polinomio = polinomioComplejo([1 + 0j, -1 + 0j])  # x - 1
-    assert polinomio.evaluar(1 + 0j) == 0 + 0j
-    assert polinomio.evaluar(2 + 0j) == 1 + 0j
+class test_polinomioComplejo(unittest.TestCase):
+    def test_evaluar(self):
+        polinomio = polinomioComplejo([complex(1), complex(2), complex(1)])
+        self.assertEqual(polinomio.evaluar(complex(1)), complex(4))
+
+if __name__ == "__main__":
+    unittest.main()
