@@ -16,6 +16,12 @@ class generadorFractal:
     """
 
     def __init__(self, ancho, alto, polinomio, min_complejo, max_complejo, iteraciones, umbral, **kwargs):
+        
+        if ancho <= 0 or alto <= 0:
+            raise ValueError("Ancho y alto deben ser mayores que 0")
+        if iteraciones <= 0:
+            raise ValueError("Iteraciones debe ser mayor que 0")
+        
         """
         Inicializa el generador de fractales con los parámetros dados.
 
@@ -45,7 +51,6 @@ class generadorFractal:
         Genera la imagen fractal
         
         Returns:
-            list: Matriz 2D donde cada elemento es una lista de colores RGB
             Los puntos convergentes (no divergen) quedan en negro [0,0,0]
             Los puntos divergentes tienen color según su velocidad de escape, (basado en el punto 4).
         """

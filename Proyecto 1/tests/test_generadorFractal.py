@@ -27,6 +27,35 @@ class test_generadorFractal(unittest.TestCase):
         
         # Cada pixel debe ser de 3 valores
         self.assertEqual(len(imagen[0][0]), 3)
+        
+    def test_parametros_invalidos(self):
+        with self.assertRaises(ValueError):
+            generadorFractal(
+                ancho=0,  # Inválido
+                alto=10,
+                polinomio=self.polinomio,
+                min_complejo=complex(-2, -2),
+                max_complejo=complex(2, 2),
+                iteraciones=20,
+                umbral=2.0
+            )
+            
+    def test_no_hay_umbral(self):
+        generador = generadorFractal(
+            ancho=10,
+            alto=10,
+            polinomio=self.polinomio,
+            min_complejo=complex(-2, -2),
+            max_complejo=complex(2, 2),
+            iteraciones=20,
+            umbral=0.0  # Todos los puntos deberían diverger
+        )
+        imagen = generador.generar()
+        # Verificar que no hay puntos negros
+        for fila in imagen:
+            for pixel in fila:
+                self.assertNotEqual(pixel, [0, 0, 0])
+    
 
     def test_generar_tipos_de_datos(self):
         
@@ -73,7 +102,7 @@ class test_generadorFractal(unittest.TestCase):
     def test_generar_puntos_convergentes(self):
         """Verifica que los puntos convergentes sean negros"""
         
-        # Polinomio que converge para z=0 (f(z) = z)
+        # Polinomio que converge
         polinomio_convergente = polinomioComplejo([complex(0), complex(1)])
         
         generador = generadorFractal(

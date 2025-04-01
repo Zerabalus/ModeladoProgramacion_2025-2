@@ -1,4 +1,4 @@
-<img src="./img/xiao.png" alt="<3" align= "left" width="30%" height="30%">
+<img src="./img/sw" alt="<3" align= "left" width="30%" height="30%">
 
 
 ```zsh

@@ -11,7 +11,7 @@ class polinomioComplejo:
     def __init__(self, coeficientes):
         
         """
-        Inicializa el polinomio con los coeficientes dados.
+        Inicia el polinomio con los coeficientes dados.
 
         Args:
             coeficientes (list[complex]): Coeficientes del polinomio ordenados
@@ -31,3 +31,4 @@ class polinomioComplejo:
             complex: Resultado de la evaluación
         """
         return sum(coef * (z ** i) for i, coef in enumerate(self.coeficientes))
+    

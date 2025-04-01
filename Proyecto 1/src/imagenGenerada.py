@@ -17,7 +17,7 @@ class imagenGenerada:
         # Crea una nueva imagen en modo RGB
         img = Image.new('RGB', (len(imagen_lista[0]), len(imagen_lista)))
         
-        # Pone los píxeles manualmente
+        # Pone los píxeles
         pixels = img.load()
         for y in range(img.size[1]):
             for x in range(img.size[0]):

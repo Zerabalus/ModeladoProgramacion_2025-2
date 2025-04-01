@@ -17,6 +17,10 @@ class test_imagenGenerada(unittest.TestCase):
     def test_guardar_imagen(self):
         imagenGenerada.guardar_imagen(self.imagen_prueba, "test_output/test.png")
         self.assertTrue(os.path.exists("test_output/test.png"))
+    
+    def test_formato_invalido(self):
+        with self.assertRaises(ValueError):
+            imagenGenerada.guardar_imagen([[[255,255,255]]], "test_output/invalid.txt")
 
 if __name__ == "__main__":
     unittest.main()

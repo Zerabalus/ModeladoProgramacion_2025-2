@@ -21,6 +21,15 @@ class TestArchivoEntrada(unittest.TestCase):
                 "color: (255,0,0)\n"
             )
 
+    def test_formato_incorrecto(self):
+        with open("test_input/mal_formato.txt", "w") as f:
+            f.write("width 800\n")  # Falta el :
+        parametros = archivoEntrada.analizar_archivo("test_input/mal_formato.txt")
+        self.assertEqual(parametros, {})
+        
+    def test_archivo_inexistente(self):
+        with self.assertRaises(FileNotFoundError):
+            archivoEntrada.analizar_archivo("no_existe.txt")
     
     @classmethod
     def tearDownClass(cls):
@@ -44,4 +53,3 @@ class TestArchivoEntrada(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
